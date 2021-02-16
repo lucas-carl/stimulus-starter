@@ -1,13 +1,13 @@
-const path = require("path")
+const path = require("path");
 
 module.exports = {
   entry: {
-    bundle: "./src/index.js"
+    bundle: "./src/index.js",
   },
 
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, "public")
+    path: path.resolve(__dirname, "public"),
   },
 
   mode: "production",
@@ -17,13 +17,9 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: [
-          /node_modules/
-        ],
-        use: [
-          { loader: "babel-loader" }
-        ]
-      }
-    ]
-  }
-}
+        include: [/src/],
+        use: [{ loader: "babel-loader" }],
+      },
+    ],
+  },
+};
